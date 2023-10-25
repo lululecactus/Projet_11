@@ -1,7 +1,12 @@
 import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { setGetProfile } from "../../redux/reducers/profileSlice"
 
 export default function User() {
-    
+    const token = useSelector(state => state.userAuth.token)
+
+    const dispatch = useDispatch()
+
     useEffect(() => {
         const fetchDataUser = async () => {
             try {
@@ -12,14 +17,13 @@ export default function User() {
                     }
                 })
                 const data = await response.json()
-                const token = data.body
-                console.log(data)
+                dispatch(setGetProfile({ data }))
             } catch (err) {
                 console.log(err)
             }
         }
         fetchDataUser()
-    }, [])
+    }, [token])
 
     return (
 

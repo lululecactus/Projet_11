@@ -13,7 +13,6 @@ export default function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/sign-in" element={<SignIn />} />
 				<Route path="/user" element={<User />} />
-
 			</Routes>
 			<Footer />
 	 	</div>

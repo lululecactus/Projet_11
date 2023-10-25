@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
+import { setLogOut } from "../../redux/reducers/userAuthSlice"
 import logo from "../../assets/img/argentBankLogo.webp"
 
 export default function Header() {
+    const token = useSelector(state => state.userAuth.token)
+    const profile = useSelector((state) => state.profile)
+    const dispatch = useDispatch()
+
     return (
         <header>
             <nav className="main-nav">
@@ -15,11 +21,23 @@ export default function Header() {
                     <h1 className="sr-only">Argent Bank</h1>
                 </Link>
                 <div>
+                    {token && (
+                        <Link
+                            className="main-nav-item"
+                            to="./user">
+                            {profile.userName}
+                        </Link>
+                    )}
                     <Link
                         className="main-nav-item"
-                        to="./sign-in/">
+                        to={token ? "./" : "./sign-in/"}
+                        onClick={() => {
+                            if (token) {
+                                dispatch(setLogOut({}))
+                            }
+                        }}>
                         <i className="fa fa-user-circle"></i>
-                        &nbsp;Sign In
+                        {token ? " Sign Out" : " Sign In"}
                     </Link>
                 </div>
             </nav>
