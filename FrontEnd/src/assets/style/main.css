@@ -19,6 +19,8 @@ body {
 
 .bg-dark {
     background-color: #12002b;
+    min-height: calc(100vh - 143px);
+    padding: 1px 0;
 }
 
 .sr-only {
@@ -61,7 +63,7 @@ body {
 }
 
 .main-nav-logo {
-     display: flex;
+    display: flex;
     align-items: center;
 }
 
