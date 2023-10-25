@@ -4,7 +4,6 @@ import { setGetProfile } from "../../redux/reducers/profileSlice"
 import Account from "../../components/Account/Account"
 import EditButton from "../../components/EditButton/EditButton"
 
-
 export default function User() {
     const token = useSelector(state => state.userAuth.token)
     const profile = useSelector((state) => state.profile)

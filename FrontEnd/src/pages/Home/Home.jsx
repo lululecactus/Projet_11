@@ -5,6 +5,7 @@ import Money from "../../assets/img/icon-money.webp"
 import Security from "../../assets/img/icon-security.webp"
 
 export default function Home() {
+    
     return (
         <main>
             <Banner />

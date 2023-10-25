@@ -18,8 +18,11 @@ const profileSlice = createSlice({
         setEditProfile: (state, action) => {
             state.userName = action.payload
         },
+        resetProfile: () => {
+            return initialState;
+        },
     },
 })
 
-export const { setGetProfile, setEditProfile } = profileSlice.actions
+export const { setGetProfile, setEditProfile, resetProfile } = profileSlice.actions
 export default profileSlice.reducer

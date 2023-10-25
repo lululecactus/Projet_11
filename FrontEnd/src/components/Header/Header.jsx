@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { setLogOut } from "../../redux/reducers/userAuthSlice"
+import { resetProfile } from "../../redux/reducers/profileSlice"
 import logo from "../../assets/img/argentBankLogo.webp"
 
 export default function Header() {
@@ -34,11 +35,19 @@ export default function Header() {
                         onClick={() => {
                             if (token) {
                                 dispatch(setLogOut({}))
+                                dispatch(resetProfile())
                             }
                         }}>
                         <i className="fa fa-user-circle"></i>
                         {token ? " Sign Out" : " Sign In"}
                     </Link>
+                    {!token && (
+                        <Link
+                            className="main-nav-item"
+                            to="./sign-up">
+                            Sign Up
+                        </Link>
+                    )}
                 </div>
             </nav>
         </header>
